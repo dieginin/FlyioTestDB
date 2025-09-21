@@ -33,4 +33,4 @@ def main(page: ft.Page):
     )
 
 
-ft.app(main)
+ft.app(main, assets_dir="assets")
