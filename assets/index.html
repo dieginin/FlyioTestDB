@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HubSync</title>
+    <meta name="description" content="Carefree Cultivations gestion PWA">
+
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="/assets/manifest.json">
+    <meta name="theme-color" content="#2196F3">
+
+    <!-- Icons for different devices -->
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon-192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/icons/icon-512.png">
+
+    <!-- iOS specific -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="HubSync">
+
+    <!-- Flet CSS -->
+    <link rel="stylesheet" type="text/css" href="/flet/flet.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Flet app will be injected here -->
+    </div>
+
+    <!-- Flet JavaScript -->
+    <script src="/flet/flet.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => console.log('SW registered'))
+                .catch(error => console.log('SW registration failed'));
+        }
+    </script>
+</body>
+
+</html>
