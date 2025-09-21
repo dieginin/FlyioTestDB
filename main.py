@@ -5,14 +5,20 @@ def main(page: ft.Page):
     page.title = "Flet counter example"
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
 
-    txt_number = ft.TextField(value="0", text_align=ft.TextAlign.RIGHT, width=100)
+    count = int(page.client_storage.get("count") or 0)
+
+    txt_number = ft.TextField(
+        value=str(count), text_align=ft.TextAlign.RIGHT, width=100
+    )
 
     def minus_click(e):
         txt_number.value = str(int(txt_number.value or 0) - 1)
+        page.client_storage.set("count", txt_number.value)
         page.update()
 
     def plus_click(e):
         txt_number.value = str(int(txt_number.value or 0) + 1)
+        page.client_storage.set("count", txt_number.value)
         page.update()
 
     page.add(
