@@ -2,10 +2,8 @@ import flet as ft
 
 
 def main(page: ft.Page):
-    # Configuración básica
     page.title = "HubSync"
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
-    page.theme_mode = ft.ThemeMode.LIGHT
 
     count = int(page.client_storage.get("count") or 0)
 
@@ -35,9 +33,4 @@ def main(page: ft.Page):
     )
 
 
-if __name__ == "__main__":
-    # Configurar la aplicación para servir archivos estáticos
-    ft.app(
-        target=main,
-        assets_dir="assets",  # Directorio de assets
-    )
+ft.app(target=main)

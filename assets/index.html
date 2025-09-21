@@ -2,38 +2,99 @@
 <html>
 
 <head>
+    <base href="/">
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="description" content="Flet application.">
+
+    <!-- iOS meta tags & icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Flet">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon-192.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <!-- Flet specific -->
+    <meta name="flet-route-url-strategy" content="path">
+    <meta name="flet-web-pyodide" content="false">
+    <meta name="flet-websocket-endpoint-path" content="/ws">
+
     <title>HubSync</title>
-    <meta name="description" content="Carefree Cultivations gestion PWA">
+    <link rel="manifest" href="manifest.json">
 
-    <!-- PWA Configuration -->
-    <link rel="manifest" href="/assets/manifest.json">
-    <meta name="theme-color" content="#2196F3">
+    <script>
+        var webRenderer = "auto";
+        var useColorEmoji = false;
+    </script>
 
-    <!-- Icons for different devices -->
-    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon-192.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/icon-192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/assets/icons/icon-512.png">
+    <script>webRenderer = "canvaskit";</script>
+    <script>useColorEmoji = false;</script>
 
-    <!-- iOS specific -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="HubSync">
-
-    <!-- Flet CSS -->
-    <link rel="stylesheet" type="text/css" href="/flet/flet.css">
+    <!-- pyodideCode -->
 </head>
 
 <body>
-    <div id="app">
-        <!-- Flet app will be injected here -->
+    <div id="loading">
+        <style>
+            body {
+                inset: 0;
+                overflow: hidden;
+                margin: 0;
+                padding: 0;
+                position: fixed;
+            }
+
+            #loading {
+                align-items: center;
+                display: flex;
+                height: 100%;
+                justify-content: center;
+                width: 100%;
+            }
+
+            #loading img {
+                animation: 1s ease-in-out 0s infinite alternate breathe;
+                opacity: .66;
+                transition: opacity .4s;
+            }
+
+            #loading.main_done img {
+                opacity: 1;
+            }
+
+            #loading.init_done img {
+                animation: .33s ease-in-out 0s 1 forwards zooooom;
+                opacity: .05;
+            }
+
+            @keyframes breathe {
+                from {
+                    transform: scale(0.4);
+                    opacity: 1.0;
+                }
+
+                to {
+                    transform: scale(0.35);
+                    opacity: .7;
+                }
+            }
+
+            @keyframes zooooom {
+                from {
+                    transform: scale(0.4)
+                }
+
+                to {
+                    transform: scale(10)
+                }
+            }
+        </style>
+        <img src="icons/loading-animation.png" alt="Loading..." />
     </div>
-
-    <!-- Flet JavaScript -->
-    <script src="/flet/flet.js"></script>
-
-    <!-- Service Worker Registration -->
+    <script src="flutter_bootstrap.js" async></script>
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/sw.js')

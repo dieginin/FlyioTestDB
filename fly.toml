@@ -3,8 +3,6 @@ app = "flyiotestdb"
 kill_signal = "SIGINT"
 kill_timeout = 5
 
-[env]
-FLET_ASSETS_DIR = "assets"
 
 [http_service]
 internal_port = 8000
