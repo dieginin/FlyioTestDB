@@ -40,5 +40,4 @@ if __name__ == "__main__":
     ft.app(
         target=main,
         assets_dir="assets",  # Directorio de assets
-        web_renderer=ft.WebRenderer.HTML,  # Usar HTML renderer para mejor compatibilidad PWA
     )
